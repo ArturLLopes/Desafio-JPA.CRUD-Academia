@@ -1,7 +1,8 @@
 package desafio.jpa.academia.academia_digital.service;
 
-import desafio.jpa.academia.academia_digital.entity.Aluno;
+
 import desafio.jpa.academia.academia_digital.entity.Matricula;
+import desafio.jpa.academia.academia_digital.entity.form.MatriculaForm;
 
 import java.util.List;
 

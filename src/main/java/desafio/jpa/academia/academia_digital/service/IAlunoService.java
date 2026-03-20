@@ -1,6 +1,8 @@
 package desafio.jpa.academia.academia_digital.service;
 
 import desafio.jpa.academia.academia_digital.entity.Aluno;
+import desafio.jpa.academia.academia_digital.entity.form.AlunoForm;
+import desafio.jpa.academia.academia_digital.entity.form.AlunoUpdateForm;
 
 import java.util.List;
 
