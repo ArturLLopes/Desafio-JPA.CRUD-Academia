@@ -1,7 +1,15 @@
 package desafio.jpa.academia.academia_digital.entity.form;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AlunoForm {
 
     private String nome;
@@ -10,5 +18,6 @@ public class AlunoForm {
 
     private String bairro;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeNascimento;
 }
