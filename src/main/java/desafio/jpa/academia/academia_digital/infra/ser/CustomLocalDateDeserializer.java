@@ -12,9 +12,9 @@ import java.util.List;
 
 public class CustomLocalDateDeserializer extends JsonDeserializer<LocalDate> { // ✅ LocalDate
 
-    private static final List<DateTimeFormatter> FORMATTERS = List.of(
+    public static final List<DateTimeFormatter> FORMATTERS = List.of(
             DateTimeFormatter.ofPattern("MM/dd/yyyy"),
-            DateTimeFormatter.ofPattern("dd/MM/yyyy"),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"),
             DateTimeFormatter.ISO_LOCAL_DATE
     );
 

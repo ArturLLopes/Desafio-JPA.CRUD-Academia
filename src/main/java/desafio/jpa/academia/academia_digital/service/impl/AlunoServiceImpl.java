@@ -9,6 +9,7 @@ import desafio.jpa.academia.academia_digital.service.IAlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -34,8 +35,15 @@ public class AlunoServiceImpl implements IAlunoService {
     }
 
     @Override
-    public List<Aluno> getALl() {
-        return repository.findAll();
+    public List<Aluno> getAll(String dataDeNascimento) {
+
+        if (dataDeNascimento == null){
+            return repository.findAll();
+        }else {
+            LocalDate localDate = LocalDate.parse(dataDeNascimento);
+            return repository.findByDataDeNascimento(localDate);
+        }
+
     }
 
     @Override

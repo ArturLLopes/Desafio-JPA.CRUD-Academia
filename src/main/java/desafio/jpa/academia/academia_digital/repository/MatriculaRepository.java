@@ -12,7 +12,7 @@ import java.util.List;
 public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
 
 
-    @Query(value = "SELECT * FROM tb_matriculas m " +
+    @Query(value = "SELECT m.* FROM tb_matricula m " +
             "INNER JOIN tb_alunos a ON m.aluno_id = a.id " +
             "WHERE a.bairro = :bairro", nativeQuery = true)
 
