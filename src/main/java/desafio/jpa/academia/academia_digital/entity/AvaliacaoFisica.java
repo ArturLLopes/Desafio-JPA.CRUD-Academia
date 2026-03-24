@@ -1,6 +1,7 @@
 package desafio.jpa.academia.academia_digital.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import desafio.jpa.academia.academia_digital.infra.ser.CustomLocalDateDeserializer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,7 @@ public class AvaliacaoFisica {
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     private LocalDateTime dataDaAvaliacao = LocalDateTime.now();
 
     @Column(name = "peso_atual")

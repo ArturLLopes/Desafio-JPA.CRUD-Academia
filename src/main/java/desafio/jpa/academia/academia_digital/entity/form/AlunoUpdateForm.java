@@ -1,6 +1,7 @@
 package desafio.jpa.academia.academia_digital.entity.form;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import desafio.jpa.academia.academia_digital.infra.ser.CustomLocalDateDeserializer;
 
 import java.time.LocalDate;
 
@@ -10,6 +11,6 @@ public class AlunoUpdateForm {
 
     private  String bairro;
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     private LocalDate dataDeNacimento;
 }
