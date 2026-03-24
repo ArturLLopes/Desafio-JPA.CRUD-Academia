@@ -12,15 +12,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AvaliacaoFisicaForm {
 
+    @NotNull(message = "Preencha o campo corretamente.")
     @Positive(message = "O Id do aluno precisa ser positivo.")
     private Long alunoId;
 
     @NotNull(message = "Preencha o campo corretamente.")
-    @Positive(message = "${validatedValue}' precisa ser positivo.")
-    private double peso;
+    @Positive(message = "'${validatedValue}' precisa ser positivo.")
+    private Double peso;
 
     @NotNull(message = "Preencha o campo corretamente.")
-    @Positive(message = "${validatedValue}' precisa ser positivo.")
-    @DecimalMin(value = "150", message = "'${validatedValue}' precisa ser no mínimo {value}.")
+    @Positive(message = "'${validatedValue}' precisa ser positivo.")
+    @DecimalMin(value = "100", message = "'${validatedValue}' precisa ser no mínimo {value}.")
     private double altura;
 }

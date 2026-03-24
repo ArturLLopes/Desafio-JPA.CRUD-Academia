@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlunoServiceImpl implements IAlunoService {
@@ -20,6 +21,11 @@ public class AlunoServiceImpl implements IAlunoService {
 
     @Override
     public Aluno create(AlunoForm form) {
+
+        if (repository.existsByCpf(form.getCpf())) {
+            throw new RuntimeException("CPF já cadastrado!");
+        }
+
         Aluno aluno = new Aluno();
         aluno.setNome(form.getNome());
         aluno.setCpf(form.getCpf());
@@ -30,38 +36,46 @@ public class AlunoServiceImpl implements IAlunoService {
     }
 
     @Override
-    public Aluno get(Long id) {
-        return null;
+    public Optional<Aluno> findById(Long id) {
+
+        return repository.findById(id);
     }
 
     @Override
     public List<Aluno> getAll(String dataDeNascimento) {
-
-        if (dataDeNascimento == null){
+        if (dataDeNascimento == null) {
             return repository.findAll();
-        }else {
-            LocalDate localDate = LocalDate.parse(dataDeNascimento);
-            return repository.findByDataDeNascimento(localDate);
         }
-
+        LocalDate localDate = LocalDate.parse(dataDeNascimento);
+        return repository.findByDataDeNascimento(localDate);
     }
 
     @Override
-    public Aluno update(Long id, AlunoUpdateForm formUpdate) {
-        return null;
+    public Optional<Aluno> update(Long id, AlunoUpdateForm formUpdate) {
+
+        return repository.findById(id).map(aluno -> {
+            aluno.setNome(formUpdate.getNome());
+            aluno.setBairro(formUpdate.getBairro());
+            aluno.setDataDeNascimento(formUpdate.getDataDeNascimento());
+            return repository.save(aluno);
+        });
     }
 
     @Override
-    public void delete(Long id) {
-
+    public boolean delete(Long id) {
+        // ✅ Retorna boolean para o controller saber se encontrou o registro
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id) {
+    public List<AvaliacaoFisica> getAllAvaliacoesByAlunoId(Long id) {
 
-        Aluno aluno = repository.findById(id).get();
+        Aluno aluno = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado! Id: " + id));
         return aluno.getAvaliacoes();
     }
-
-
 }

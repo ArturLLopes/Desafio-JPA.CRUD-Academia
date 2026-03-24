@@ -24,14 +24,16 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 50)
     private String nome;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, length = 14)
     private String cpf;
 
+    @Column(nullable = false, length = 50)
     private String bairro;
 
-    @JsonFormat(pattern = "MM/dd/yyyy")  // ✅ substituído @JsonDeserialize
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeNascimento;
 
     @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)

@@ -27,7 +27,7 @@ public class AvaliacaoFisica {
     @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     private LocalDateTime dataDaAvaliacao = LocalDateTime.now();
 
-    @Column(name = "peso_atual")
+    @Column(name = "peso_atual", nullable = false)
     private double peso;
 
     @Column(name = "altura_atual")

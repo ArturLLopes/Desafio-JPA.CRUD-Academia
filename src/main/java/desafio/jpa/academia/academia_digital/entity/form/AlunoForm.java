@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AlunoForm {
 
-    @NotEmpty(message = "Preencha o campo corretamente.")
+    @NotEmpty(message = "Prencha o campo corretamente.")
     @Size(min = 3, max =50, message = "'${validatedValue}' precisa estar entre {min} e {max} caracteres.")
     private String nome;
 
@@ -28,5 +28,6 @@ public class AlunoForm {
 
     @NotNull(message = "Prencha o campo corretamente.")
     @Past(message = "Data '${validatedValue}' é inválida.")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeNascimento;
 }
