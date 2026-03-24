@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_alunos")
-@JsonIgnoreProperties
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Aluno {
 
     @Id
@@ -31,7 +31,7 @@ public class Aluno {
 
     private String bairro;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDate dataDeNascimento;
 
     @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)

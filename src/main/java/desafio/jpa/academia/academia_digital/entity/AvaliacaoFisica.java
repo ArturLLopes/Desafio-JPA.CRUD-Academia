@@ -23,7 +23,7 @@ public class AvaliacaoFisica {
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataDaAvaliacao = LocalDateTime.now();
 
     @Column(name = "peso_atual")

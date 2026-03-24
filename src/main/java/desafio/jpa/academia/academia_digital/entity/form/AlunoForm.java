@@ -18,6 +18,6 @@ public class AlunoForm {
 
     private String bairro;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDate dataDeNascimento;
 }
