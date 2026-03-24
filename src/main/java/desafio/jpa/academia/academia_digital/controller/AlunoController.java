@@ -2,6 +2,7 @@ package desafio.jpa.academia.academia_digital.controller;
 
 
 import desafio.jpa.academia.academia_digital.entity.Aluno;
+import desafio.jpa.academia.academia_digital.entity.AvaliacaoFisica;
 import desafio.jpa.academia.academia_digital.entity.form.AlunoForm;
 import desafio.jpa.academia.academia_digital.service.impl.AlunoServiceImpl;
 import jakarta.validation.Valid;
@@ -25,6 +26,11 @@ public class AlunoController {
     @PostMapping
     public Aluno create(@Valid @RequestBody AlunoForm form){
         return service.create(form);
+    }
+
+    @GetMapping("/avaliacoes/{id}")
+    public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(@PathVariable Long id){
+        return service.getAllAvaliacaoFisicaId(id);
     }
 
 }

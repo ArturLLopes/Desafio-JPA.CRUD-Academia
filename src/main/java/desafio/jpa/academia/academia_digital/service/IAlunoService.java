@@ -1,6 +1,7 @@
 package desafio.jpa.academia.academia_digital.service;
 
 import desafio.jpa.academia.academia_digital.entity.Aluno;
+import desafio.jpa.academia.academia_digital.entity.AvaliacaoFisica;
 import desafio.jpa.academia.academia_digital.entity.form.AlunoForm;
 import desafio.jpa.academia.academia_digital.entity.form.AlunoUpdateForm;
 
@@ -16,4 +17,7 @@ public interface IAlunoService {
     Aluno update(Long id, AlunoUpdateForm formUpdate);
 
     void delete(Long id);
+
+
+    List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id);
 }

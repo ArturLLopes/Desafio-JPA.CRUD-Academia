@@ -1,6 +1,7 @@
 package desafio.jpa.academia.academia_digital.service.impl;
 
 import desafio.jpa.academia.academia_digital.entity.Aluno;
+import desafio.jpa.academia.academia_digital.entity.AvaliacaoFisica;
 import desafio.jpa.academia.academia_digital.entity.form.AlunoForm;
 import desafio.jpa.academia.academia_digital.entity.form.AlunoUpdateForm;
 import desafio.jpa.academia.academia_digital.repository.AlunoRepository;
@@ -46,4 +47,13 @@ public class AlunoServiceImpl implements IAlunoService {
     public void delete(Long id) {
 
     }
+
+    @Override
+    public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id) {
+
+        Aluno aluno = repository.findById(id).get();
+        return aluno.getAvaliacoes();
+    }
+
+
 }
